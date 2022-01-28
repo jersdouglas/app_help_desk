@@ -1,10 +1,6 @@
 <?php
 
-    echo '<pre>';
-
-    print_r($_POST);
-
-    echo '</pre>';
+    session_start();
 
     //Montando o texto
     $titulo = str_replace('#','-',$_POST['titulo']);
@@ -12,11 +8,11 @@
     $descricao = str_replace('#','-',$_POST['descricao']);
     //implode('#',$_POST);
 
-    $texto = $titulo.'#'.$categoria.'#'.$descricao.PHP_EOL;
+    $texto = $SESSION['id'] . '#' . $titulo.'#'.$categoria.'#'.$descricao.PHP_EOL;
     
     //http://php.net/manual/pt_BR/function.fopen.php
     //Abrindo o arquivo
-    $arquivo = fopen('arquivo.hd','a');
+    $arquivo = fopen('../../app_help_desk/arquivo.hd','a');
 
     //Escrevendo texto no arquivo
     fwrite($arquivo,$texto);
